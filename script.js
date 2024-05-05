@@ -13,7 +13,7 @@ function generatePassword() {
     const includeSymbols = document.getElementById('includeSymbols').checked;
     const password = createPassword(length, includeUppercase, includeNumbers, includeSymbols);
     document.getElementById('generatedPassword').value = password;
-    document.getElementById('passwordStrength').textContent = analyzeStrength(password);
+    analyzeStrength(password);
 }
 
 function createPassword(length, upper, numbers, symbols) {
@@ -37,19 +37,33 @@ function createPassword(length, upper, numbers, symbols) {
 
 function analyzeStrength(password) {
     const result = zxcvbn(password);
+    let strengthText = '';
     switch (result.score) {
         case 0:
         case 1:
-            return 'Weak';
+            strengthText = 'Weak';
+            break;
         case 2:
-            return 'Fair';
+            strengthText = 'Fair';
+            break;
         case 3:
-            return 'Good';
+            strengthText = 'Good';
+            break;
         case 4:
-            return 'Strong';
+            strengthText = 'Strong';
+            break;
         default:
-            return 'Weak';
+            strengthText = 'Weak';
     }
+
+    let crackTimes = `
+        <span> Time to guess this password: </span>
+        <ul>
+            <li>Online (10 times / second): ${result.crack_times_display.online_no_throttling_10_per_second}</li>
+            <li>Offline (10k times / second): ${result.crack_times_display.offline_slow_hashing_1e4_per_second}</li>
+        </ul>
+    `;
+    document.getElementById('passwordStrength').innerHTML = `${strengthText}<br>${crackTimes}`;
 }
 
 function copyPassword() {
