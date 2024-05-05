@@ -34,7 +34,7 @@
 <body>
     <div class="container mt-5">
         <h1>Password Generator</h1>
-        <p>Create strong, random passwords locally in your browser. Perfect for protecting your online security.</p>
+        <p>Create strong, random passwords locally in your browser. We will never have access to this password.</p>
         <div class="form-group">
             <label for="passwordLength">Password Length: <span id="lengthDisplay">12</span></label>
             <input type="range" class="form-control-range" id="passwordLength" min="4" max="64" value="12" oninput="updateLengthDisplay(this.value); generatePassword();">
@@ -66,8 +66,8 @@
     <div class="container mt-5">
         <h5>Want to know more about this app?</h5>
         <br>
-        <p>Visit my <a href="https://github.com/jorgesoft/pswd-app">GitHub! </a></p>
-        <p>Strength calculated with <a href="https://github.com/dropbox/zxcvbn">dropbox/zxcvbn</a></p>
+        <p>Check the source code at <a href="https://github.com/jorgesoft/pswd-app">GitHub</a>.</p>
+        <p>Strength calculated with <a href="https://lowe.github.io/tryzxcvbn/">dropbox/zxcvbn</a>.</p>
         <br>
         <br>
     </div>
