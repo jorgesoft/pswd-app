@@ -21,7 +21,7 @@ function createPassword(length, upper, numbers, symbols) {
         upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
         lower: 'abcdefghijklmnopqrstuvwxyz',
         numbers: '0123456789',
-        symbols: '!@#$%^&*()_+-=[]{}|;:,.<>?'
+        symbols: '!@#$%^&*()_+-=[]{};:,.<>?'
     };
     let validChars = charset.lower; // Always include lowercase letters
     if (upper) validChars += charset.upper;
