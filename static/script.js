@@ -37,33 +37,43 @@ function createPassword(length, upper, numbers, symbols) {
 
 function analyzeStrength(password) {
     const result = zxcvbn(password);
+    const strengthDisplay = document.getElementById('passwordStrength');
     let strengthText = '';
-    switch (result.score) {
-        case 0:
-        case 1:
-            strengthText = 'Weak';
-            break;
-        case 2:
-            strengthText = 'Fair';
-            break;
-        case 3:
-            strengthText = 'Good';
-            break;
-        case 4:
-            strengthText = 'Strong';
-            break;
-        default:
-            strengthText = 'Weak';
-    }
-
+    let strengthClass = '';
     let crackTimes = `
-        <span> Time to guess this password: </span>
         <ul>
             <li>Online (10 times / second): ${result.crack_times_display.online_no_throttling_10_per_second}</li>
             <li>Offline (10k times / second): ${result.crack_times_display.offline_slow_hashing_1e4_per_second}</li>
         </ul>
     `;
-    document.getElementById('passwordStrength').innerHTML = `${strengthText}<br>${crackTimes}`;
+
+    switch (result.score) {
+        case 0:
+            strengthText = 'Very Weak';
+            strengthClass = 'text-danger';
+            break;
+        case 1:
+            strengthText = 'Weak';
+            strengthClass = 'text-danger';
+            break;
+        case 2:
+            strengthText = 'Fair';
+            strengthClass = 'text-warning';
+            break;
+        case 3:
+            strengthText = 'Good';
+            strengthClass = 'text-primary';
+            break;
+        case 4:
+            strengthText = 'Strong';
+            strengthClass = 'text-success';
+            break;
+        default:
+            strengthText = 'Very Weak';
+            strengthClass = 'text-danger';
+    }
+
+    strengthDisplay.innerHTML = `<span class="${strengthClass}">${strengthText}</span><br>Time to guess this password: ${crackTimes}`;
 }
 
 function copyPassword() {
