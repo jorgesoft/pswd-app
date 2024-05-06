@@ -17,14 +17,33 @@ function updateLengthDisplay(value) {
 
 function generatePassphrase() {
     const numWords = document.getElementById('passwordLength').value;
+    const includeUppercase = document.getElementById('includeUppercase').checked;
+    const includeNumbers = document.getElementById('includeNumbers').checked;
+    const includeSymbols = document.getElementById('includeSymbols').checked;
+
     let passphrase = '';
     const wordKeys = Object.keys(globalWords);
     for (let i = 0; i < numWords; i++) {
-        const randomIndex = Math.floor(Math.random() * wordKeys.length);
-        passphrase += (i > 0 ? ' ' : '') + globalWords[wordKeys[randomIndex]];
+        let word = globalWords[wordKeys[Math.floor(Math.random() * wordKeys.length)]];
+        if (includeUppercase) {
+            word = word.charAt(0).toUpperCase() + word.slice(1); // Capitalize the first letter of each word
+        }
+        passphrase += (i > 0 ? ' ' : '') + word;
     }
+
+    // Append a random number at the end of the passphrase if checked
+    if (includeNumbers) {
+        passphrase += Math.floor(Math.random() * 10); // Append a random number (0-9)
+    }
+
+    // Append a random symbol at the end of the passphrase if checked
+    if (includeSymbols) {
+        const symbols = "!@#$%^&*()";
+        passphrase += symbols.charAt(Math.floor(Math.random() * symbols.length)); // Append a random symbol
+    }
+
     document.getElementById('generatedPassword').value = passphrase;
-    analyzeStrength(passphrase); // Pass the generated passphrase for strength analysis
+    analyzeStrength(passphrase);
 }
 
 function analyzeStrength(passphrase) {
