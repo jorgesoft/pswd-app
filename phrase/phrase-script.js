@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 async function loadWordListAndGeneratePassphrase() {
-    const response = await fetch('https://raw.githubusercontent.com/jorgesoft/pswd-app/main/static/eff_short_wordlist_1.json'); // Ensure this path points to where your JSON file is served
+    const response = await fetch('https://raw.githubusercontent.com/jorgesoft/pswd-app/main/static/eff_short_wordlist_1.json');
     const words = await response.json();
     generatePassphrase(words);
 }
