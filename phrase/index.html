@@ -1,1 +1,67 @@
-test
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Password Generator | Create Strong & Random Passwords Online</title>
+    <meta name="description" content="Generate secure and random passwords online with our free tool. Customize length, include symbols, numbers, and uppercase for enhanced security. Try it now!">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/zxcvbn@4.4.2/dist/zxcvbn.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- favicon links --> 
+    <link rel="apple-touch-icon" sizes="180x180" href="static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
+    <link rel="manifest" href="static/site.webmanifest">
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://pswd.app">
+    <meta property="og:title" content="Secure Password Generator | Create Strong & Random Passwords Online">
+    <meta property="og:description" content="Generate secure and random passwords online with our free tool. Customize length, include symbols, numbers, and uppercase for enhanced security. Try it now!">
+    <meta property="og:image" content="https://pswd.app/static/og-picture.webp">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Password Generator</h1>
+        <p>Create strong, random passwords locally in your browser. We will never have access to this password.</p>
+        <div class="form-group">
+            <label for="passwordLength">Password Length: <span id="lengthDisplay">12</span></label>
+            <input type="range" class="form-control-range" id="passwordLength" min="4" max="64" value="12" oninput="updateLengthDisplay(this.value); generatePassword();">
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="includeUppercase" onchange="generatePassword()" checked>
+            <label class="form-check-label" for="includeUppercase">Include Uppercase Letters</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="includeNumbers" onchange="generatePassword()" checked>
+            <label class="form-check-label" for="includeNumbers">Include Numbers</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="includeSymbols" onchange="generatePassword()" checked>
+            <label class="form-check-label" for="includeSymbols">Include Symbols</label>
+        </div>
+        <div class="mt-3">
+            <label>Password: </label>
+            <input type="text" class="form-control" id="generatedPassword" readonly>
+        </div>
+        <div class="mt-3">
+            <label>Strength: </label>
+            <span id="passwordStrength"></span>
+        </div>
+        <div>
+            <button id="copyBtn" class="btn btn-info mt-3" onclick="copyPassword()">Copy Password</button>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <h5>Want to know more about this app?</h5>
+        <br>
+        <p>Check the source code at <a href="https://github.com/jorgesoft/pswd-app">GitHub</a>.</p>
+        <p>Strength calculated with <a href="https://lowe.github.io/tryzxcvbn/">dropbox/zxcvbn</a>.</p>
+        <br>
+        <br>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
