@@ -11,13 +11,13 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- favicon links -->
-    <link rel="apple-touch-icon" sizes="180x180" href="static/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="static/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="static/favicon-16x16.png">
-    <link rel="manifest" href="static/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="../static/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../static/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../static/favicon-16x16.png">
+    <link rel="manifest" href="../static/site.webmanifest">
     <!-- Open Graph Tags -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://pswd.app">
+    <meta property="og:url" content="https://pswd.app/phrase">
     <meta property="og:title" content="Secure Passphrase Generator | Create Strong & Random Passphrases Online">
     <meta property="og:description" content="Generate secure and random passphrases online with our free tool. Customize the number of words for enhanced security. Try it now!">
     <meta property="og:image" content="https://pswd.app/static/og-picture.webp">
@@ -53,12 +53,16 @@
         <div>
             <button id="copyBtn" class="btn btn-info mt-3" onclick="copyPassword()">Copy Passphrase</button>
         </div>
+        <br>
+        <h5>Want to use a regular password? <a href="https://pswd.app/">Try our Password Generator!</a></h5>
     </div>
     <div class="container mt-5">
-        <h5>Want to know more about this app?</h5>
-        <br>
-        <p>Check the source code at <a href="https://github.com/jorgesoft/pswd-app">GitHub</a>.</p>
-        <p>Strength calculated with <a href="https://lowe.github.io/tryzxcvbn/">dropbox/zxcvbn</a>.</p>
+        <h6>Want to know more about this app?</h6>
+        <ul>
+            <li>Check the source code at <a href="https://github.com/jorgesoft/pswd-app">GitHub</a>.</li>
+            <li>Strength calculated with <a href="https://lowe.github.io/tryzxcvbn/">dropbox/zxcvbn</a>.</li>
+            <li>List of words from <a href="https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases">The Electronic Frontier Foundation</a>.</li>
+        </ul>        
         <br>
         <br>
     </div>
