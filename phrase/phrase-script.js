@@ -11,7 +11,6 @@ async function loadWordListAndGeneratePassphrase() {
 }
 
 function updateLengthDisplay(value) {
-    console.log("Updating length display to:", value);
     document.getElementById('lengthDisplay').textContent = value + ' words';
 }
 
