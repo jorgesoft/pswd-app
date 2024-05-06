@@ -1,27 +1,30 @@
+let globalWords = {}; // Global variable to store the words dictionary
+
 document.addEventListener("DOMContentLoaded", function() {
     loadWordListAndGeneratePassphrase(); // Load words and generate initial passphrase on page load
 });
 
 async function loadWordListAndGeneratePassphrase() {
     const response = await fetch('https://raw.githubusercontent.com/jorgesoft/pswd-app/main/static/eff_short_wordlist_1.json');
-    const words = await response.json();
-    generatePassphrase(words);
+    globalWords = await response.json();
+    generatePassphrase(); // Call this function without passing 'words' as it now uses the global variable
 }
 
 function updateLengthDisplay(value) {
-    document.getElementById('lengthDisplay').textContent = `${value} words`; // Reflect that the input is for words
+    console.log("Updating length display to:", value);
+    document.getElementById('lengthDisplay').textContent = value + ' words';
 }
 
-function generatePassphrase(words) {
+function generatePassphrase() {
     const numWords = document.getElementById('passwordLength').value;
     let passphrase = '';
-    const wordKeys = Object.keys(words);
+    const wordKeys = Object.keys(globalWords);
     for (let i = 0; i < numWords; i++) {
         const randomIndex = Math.floor(Math.random() * wordKeys.length);
-        passphrase += (i > 0 ? ' ' : '') + words[wordKeys[randomIndex]];
+        passphrase += (i > 0 ? ' ' : '') + globalWords[wordKeys[randomIndex]];
     }
     document.getElementById('generatedPassword').value = passphrase;
-    analyzeStrength(passphrase); // Optional, if you want to keep passphrase strength analysis
+    analyzeStrength(passphrase); // Pass the generated passphrase for strength analysis
 }
 
 function analyzeStrength(passphrase) {
