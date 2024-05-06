@@ -21,6 +21,8 @@
     <meta property="og:title" content="Secure Passphrase Generator | Create Strong & Random Passphrases Online">
     <meta property="og:description" content="Generate secure and random passphrases online with our free tool. Customize the number of words for enhanced security. Try it now!">
     <meta property="og:image" content="https://pswd.app/static/og-picture.webp">
+        <!-- Include Font Awesome -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
@@ -56,16 +58,27 @@
         <br>
         <h5>Want to use a regular password? <a href="https://pswd.app/">Try our Password Generator!</a></h5>
     </div>
-    <div class="container mt-5">
-        <h6>Want to know more about this app?</h6>
-        <ul>
-            <li>Check the source code at <a href="https://github.com/jorgesoft/pswd-app">GitHub</a>.</li>
-            <li>Strength calculated with <a href="https://lowe.github.io/tryzxcvbn/">dropbox/zxcvbn</a>.</li>
-            <li>List of words from <a href="https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases">The Electronic Frontier Foundation</a>.</li>
-        </ul>        
-        <br>
-        <br>
-    </div>
+    <!-- Footer -->
+    <style>
+        .footer a {
+            color: black;
+        }
+        .icon-link {
+            font-size: 2rem; /* Adjust size of icons */
+            margin-right: 15px; /* Space between icons */
+        }
+    </style>
+    <!-- Footer -->
+    <footer class="footer text-center mt-4 py-3">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-auto mb-2 mb-md-0">
+                <a href="https://github.com/jorgesoft/pswd-app" class="icon-link" target="_blank">
+                    <i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/jorgeecsilva/" class="icon-link" target="_blank">
+                    <i class="fab fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>    
     <script src="./phrase-script.js"></script>
 </body>
 </html>
