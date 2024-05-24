@@ -22,8 +22,12 @@ function generatePassphrase() {
 
     let passphrase = '';
     const wordKeys = Object.keys(globalWords);
+    const crypto = window.crypto || window.msCrypto;
+
     for (let i = 0; i < numWords; i++) {
-        let word = globalWords[wordKeys[Math.floor(Math.random() * wordKeys.length)]];
+        const randomValue = new Uint32Array(1);
+        crypto.getRandomValues(randomValue);
+        let word = globalWords[wordKeys[randomValue[0] % wordKeys.length]];
         if (includeUppercase) {
             word = word.charAt(0).toUpperCase() + word.slice(1); // Capitalize the first letter of each word
         }
@@ -32,13 +36,17 @@ function generatePassphrase() {
 
     // Append a random number at the end of the passphrase if checked
     if (includeNumbers) {
-        passphrase += Math.floor(Math.random() * 10); // Append a random number (0-9)
+        const randomValue = new Uint32Array(1);
+        crypto.getRandomValues(randomValue);
+        passphrase += randomValue[0] % 10; // Append a random number (0-9)
     }
 
     // Append a random symbol at the end of the passphrase if checked
     if (includeSymbols) {
         const symbols = "!@#$%^&*()";
-        passphrase += symbols.charAt(Math.floor(Math.random() * symbols.length)); // Append a random symbol
+        const randomValue = new Uint32Array(1);
+        crypto.getRandomValues(randomValue);
+        passphrase += symbols.charAt(randomValue[0] % symbols.length); // Append a random symbol
     }
 
     document.getElementById('generatedPassword').value = passphrase;
