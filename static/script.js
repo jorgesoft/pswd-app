@@ -29,8 +29,12 @@ function createPassword(length, upper, numbers, symbols) {
     if (symbols) validChars += charset.symbols;
 
     let password = '';
+    const crypto = window.crypto || window.msCrypto;
+
     for (let i = 0; i < length; i++) {
-        password += validChars[Math.floor(Math.random() * validChars.length)];
+        const randomValue = new Uint32Array(1);
+        crypto.getRandomValues(randomValue);
+        password += validChars[randomValue[0] % validChars.length];
     }
     return password;
 }
