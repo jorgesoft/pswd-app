@@ -10,3 +10,6 @@ Customize length, include symbols, numbers, and uppercase for enhanced security.
 - Favicons from [favicon.io](https://favicon.io/emoji-favicons/).
 - Static site hosted in [DigitalOcean](https://www.digitalocean.com/).
 - List of words from [The Electronic Frontier Foundation](https://www.eff.org/deeplinks/2016/07/new-wordlists-random-passphrases) (their first short list).
+
+### Added passphrase generator because of this classic 
+![xkcd password strenght comic](https://imgs.xkcd.com/comics/password_strength.png)
